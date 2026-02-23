@@ -1,0 +1,836 @@
+@baseUrl = http://127.0.0.1:8000
+
+############################################################
+### 0) SETUP: Region + 2 Constituencies
+############################################################
+
+### Region
+POST {{baseUrl}}/regions
+Content-Type: application/json
+
+{
+  "name_th": "กรุงเทพมหานคร",
+  "total_population": 1000000
+}
+
+### Constituency 1
+###
+POST {{baseUrl}}/constituencies
+Content-Type: application/json
+
+{
+  "region_id": 1,
+  "const_number": 1,
+  "total_eligible_voters": 500
+}
+
+### Constituency 2
+###
+POST {{baseUrl}}/constituencies
+Content-Type: application/json
+
+{
+  "region_id": 1,
+  "const_number": 2,
+  "total_eligible_voters": 500
+}
+
+############################################################
+### 1) PARTIES (3 พรรค)
+############################################################
+
+### Party 1
+POST {{baseUrl}}/parties
+Content-Type: application/json
+
+{
+  "party_name": "Future Party",
+  "party_leader": "Leader A"
+}
+
+### Party 2
+###
+POST {{baseUrl}}/parties
+Content-Type: application/json
+
+{
+  "party_name": "People Party",
+  "party_leader": "Leader B"
+}
+
+### Party 3
+###
+POST {{baseUrl}}/parties
+Content-Type: application/json
+
+{
+  "party_name": "Nation Party",
+  "party_leader": "Leader C"
+}
+
+############################################################
+### 2) CANDIDATES (2 เขต เขตละ 3 คน)
+### candidate_id จะได้เป็น 1..6 ตามลำดับที่ยิง
+############################################################
+
+### เขต 1: candidate_id 1 (party 1)
+POST {{baseUrl}}/candidates
+Content-Type: application/json
+
+{
+  "const_id": 1,
+  "party_id": 1,
+  "candidate_number": 1,
+  "full_name": "Candidate A1"
+}
+
+### เขต 1: candidate_id 2 (party 2)
+###
+POST {{baseUrl}}/candidates
+Content-Type: application/json
+
+{
+  "const_id": 1,
+  "party_id": 2,
+  "candidate_number": 2,
+  "full_name": "Candidate B1"
+}
+
+### เขต 1: candidate_id 3 (party 3)
+###
+POST {{baseUrl}}/candidates
+Content-Type: application/json
+
+{
+  "const_id": 1,
+  "party_id": 3,
+  "candidate_number": 3,
+  "full_name": "Candidate C1"
+}
+
+### เขต 2: candidate_id 4 (party 1)
+###
+POST {{baseUrl}}/candidates
+Content-Type: application/json
+
+{
+  "const_id": 2,
+  "party_id": 1,
+  "candidate_number": 1,
+  "full_name": "Candidate A2"
+}
+
+### เขต 2: candidate_id 5 (party 2)
+###
+POST {{baseUrl}}/candidates
+Content-Type: application/json
+
+{
+  "const_id": 2,
+  "party_id": 2,
+  "candidate_number": 2,
+  "full_name": "Candidate B2"
+}
+
+### เขต 2: candidate_id 6 (party 3)
+###
+POST {{baseUrl}}/candidates
+Content-Type: application/json
+
+{
+  "const_id": 2,
+  "party_id": 3,
+  "candidate_number": 3,
+  "full_name": "Candidate C2"
+}
+
+############################################################
+### 3) VOTERS (20 คน) — เขต 1: 1..10, เขต 2: 11..20
+### voter_id จะได้เป็น 1..20 ตามลำดับที่ยิง
+############################################################
+
+### เขต 1 (1-10)
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111111",
+  "full_name": "Voter 1",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111112",
+  "full_name": "Voter 2",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111113",
+  "full_name": "Voter 3",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111114",
+  "full_name": "Voter 4",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111115",
+  "full_name": "Voter 5",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111116",
+  "full_name": "Voter 6",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111117",
+  "full_name": "Voter 7",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111118",
+  "full_name": "Voter 8",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111119",
+  "full_name": "Voter 9",
+  "const_id": 1
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111120",
+  "full_name": "Voter 10",
+  "const_id": 1
+}
+
+### เขต 2 (11-20)
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111121",
+  "full_name": "Voter 11",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111122",
+  "full_name": "Voter 12",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111123",
+  "full_name": "Voter 13",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111124",
+  "full_name": "Voter 14",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111125",
+  "full_name": "Voter 15",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111126",
+  "full_name": "Voter 16",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111127",
+  "full_name": "Voter 17",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111128",
+  "full_name": "Voter 18",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111129",
+  "full_name": "Voter 19",
+  "const_id": 2
+}
+
+###
+POST {{baseUrl}}/voters
+Content-Type: application/json
+
+{
+  "citizen_id": "1111111111130",
+  "full_name": "Voter 20",
+  "const_id": 2
+}
+
+############################################################
+### 4) BALLOTS — ให้ทุกคนโหวตครบ 2 ใบ (รวม 40 ballots)
+### เขต 1 winner = candidate_id 1
+### เขต 2 winner = candidate_id 5
+############################################################
+
+### เขต 1 (voter 1-10)
+### constituency: 1 ได้ 6 เสียง, 2 ได้ 3 เสียง, 3 ได้ 1 เสียง
+### partylist: party 1 ได้ 6, party 2 ได้ 3, party 3 ได้ 1
+
+### voter 1
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 1,
+  "const_id": 1,
+  "candidate_id": 1,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 1,
+  "const_id": 1,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 2
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 2,
+  "const_id": 1,
+  "candidate_id": 1,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 2,
+  "const_id": 1,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 3
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 3,
+  "const_id": 1,
+  "candidate_id": 1,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 3,
+  "const_id": 1,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 4
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 4,
+  "const_id": 1,
+  "candidate_id": 1,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 4,
+  "const_id": 1,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 5
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 5,
+  "const_id": 1,
+  "candidate_id": 1,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 5,
+  "const_id": 1,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 6 (candidate 2, party 2)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 6,
+  "const_id": 1,
+  "candidate_id": 2,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 6,
+  "const_id": 1,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 7 (candidate 2, party 2)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 7,
+  "const_id": 1,
+  "candidate_id": 2,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 7,
+  "const_id": 1,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 8 (candidate 2, party 2)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 8,
+  "const_id": 1,
+  "candidate_id": 2,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 8,
+  "const_id": 1,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 9 (candidate 3, party 3)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 9,
+  "const_id": 1,
+  "candidate_id": 3,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 9,
+  "const_id": 1,
+  "party_id": 3,
+  "vote_type": "PartyList"
+}
+
+### voter 10 (candidate 1, party 1)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 10,
+  "const_id": 1,
+  "candidate_id": 1,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 10,
+  "const_id": 1,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### เขต 2 (voter 11-20)
+### constituency: candidate 5 ได้ 6 เสียง, candidate 4 ได้ 2, candidate 6 ได้ 2
+### partylist: party 2 ได้ 6, party 1 ได้ 2, party 3 ได้ 2
+
+### voter 11 (candidate 5, party 2)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 11,
+  "const_id": 2,
+  "candidate_id": 5,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 11,
+  "const_id": 2,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 12
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 12,
+  "const_id": 2,
+  "candidate_id": 5,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 12,
+  "const_id": 2,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 13
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 13,
+  "const_id": 2,
+  "candidate_id": 5,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 13,
+  "const_id": 2,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 14
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 14,
+  "const_id": 2,
+  "candidate_id": 5,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 14,
+  "const_id": 2,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 15
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 15,
+  "const_id": 2,
+  "candidate_id": 5,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 15,
+  "const_id": 2,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+### voter 16 (candidate 4, party 1)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 16,
+  "const_id": 2,
+  "candidate_id": 4,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 16,
+  "const_id": 2,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 17 (candidate 4, party 1)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 17,
+  "const_id": 2,
+  "candidate_id": 4,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 17,
+  "const_id": 2,
+  "party_id": 1,
+  "vote_type": "PartyList"
+}
+
+### voter 18 (candidate 6, party 3)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 18,
+  "const_id": 2,
+  "candidate_id": 6,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 18,
+  "const_id": 2,
+  "party_id": 3,
+  "vote_type": "PartyList"
+}
+
+### voter 19 (candidate 6, party 3)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 19,
+  "const_id": 2,
+  "candidate_id": 6,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 19,
+  "const_id": 2,
+  "party_id": 3,
+  "vote_type": "PartyList"
+}
+
+### voter 20 (candidate 5, party 2)
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 20,
+  "const_id": 2,
+  "candidate_id": 5,
+  "vote_type": "Constituency"
+}
+###
+POST {{baseUrl}}/ballots
+Content-Type: application/json
+
+{
+  "voter_id": 20,
+  "const_id": 2,
+  "party_id": 2,
+  "vote_type": "PartyList"
+}
+
+############################################################
+### 5) RESULTS / CHECKS
+############################################################
+
+### ตรวจว่าคนโหวตครบ (has_voted_* = 1)
+GET {{baseUrl}}/voters
+
+### ดู ballot ทั้งหมด
+###
+GET {{baseUrl}}/ballots
+
+### นับ ballot ต้องเป็น 40 
+###
+GET {{baseUrl}}/ballots/count
+
+### ผลเขต (แยกเขต)
+###
+GET {{baseUrl}}/results/constituency
+
+### ผลพรรค (แยกเขต)
+###
+GET {{baseUrl}}/results/party
+
+### ผลพรรคภาพรวม
+###
+GET {{baseUrl}}/results/party/overall
+
+### ผลผู้สมัครภาพรวม
+###
+GET {{baseUrl}}/results/constituency/overall
