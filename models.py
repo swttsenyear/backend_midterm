@@ -95,4 +95,5 @@ class Ballot(SQLModel, table=True):
     )
 
     vote_type: str
+    is_valid: bool = Field(default=True)
     voted_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))

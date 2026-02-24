@@ -38,33 +38,31 @@ Content-Type: application/json
 ### 1.1) PARTIES (3 พรรค)
 ############################################################
 
-### Party 1
+### พรรคที่ 1
 POST {{baseUrl}}/parties
 Content-Type: application/json
 
 {
-  "party_name": "Future Party",
-  "party_leader": "Leader A"
+  "party_name": "พรรคก้าวหน้าไทย",
+  "party_leader": "สมชาย ใจดี"
 }
 
-### Party 2
-###
+### พรรคที่ 2
 POST {{baseUrl}}/parties
 Content-Type: application/json
 
 {
-  "party_name": "People Party",
-  "party_leader": "Leader B"
+  "party_name": "พรรคประชาชนพัฒนา",
+  "party_leader": "วิภา ศรีสุข"
 }
 
-### Party 3
-###
+### พรรคที่ 3
 POST {{baseUrl}}/parties
 Content-Type: application/json
 
 {
-  "party_name": "Nation Party",
-  "party_leader": "Leader C"
+  "party_name": "พรรคชาติรุ่งเรือง",
+  "party_leader": "อนันต์ บุญเกิด"
 }
 
 ############################################################
@@ -72,7 +70,7 @@ Content-Type: application/json
 ### candidate_id จะได้เป็น 1..6 ตามลำดับที่ยิง
 ############################################################
 
-### เขต 1: candidate_id 1 (party 1)
+### เขต1 (party 1)
 POST {{baseUrl}}/candidates
 Content-Type: application/json
 
@@ -80,11 +78,10 @@ Content-Type: application/json
   "const_id": 1,
   "party_id": 1,
   "candidate_number": 1,
-  "full_name": "Candidate A1"
+  "full_name": "ดร.ณัฐพล สุขสันต์"
 }
 
-### เขต 1: candidate_id 2 (party 2)
-###
+### เขต1 (party 2)
 POST {{baseUrl}}/candidates
 Content-Type: application/json
 
@@ -92,11 +89,10 @@ Content-Type: application/json
   "const_id": 1,
   "party_id": 2,
   "candidate_number": 2,
-  "full_name": "Candidate B1"
+  "full_name": "นางสาวศศิธร วงศ์ทอง"
 }
 
-### เขต 1: candidate_id 3 (party 3)
-###
+### เขต1 (party 3)
 POST {{baseUrl}}/candidates
 Content-Type: application/json
 
@@ -104,11 +100,9 @@ Content-Type: application/json
   "const_id": 1,
   "party_id": 3,
   "candidate_number": 3,
-  "full_name": "Candidate C1"
+  "full_name": "นายปกรณ์ ชัยวัฒนา"
 }
-
-### เขต 2: candidate_id 4 (party 1)
-###
+### เขต2 (party 1)
 POST {{baseUrl}}/candidates
 Content-Type: application/json
 
@@ -116,11 +110,10 @@ Content-Type: application/json
   "const_id": 2,
   "party_id": 1,
   "candidate_number": 1,
-  "full_name": "Candidate A2"
+  "full_name": "นายธีรภัทร เกียรติชัย"
 }
 
-### เขต 2: candidate_id 5 (party 2)
-###
+### เขต2 (party 2)
 POST {{baseUrl}}/candidates
 Content-Type: application/json
 
@@ -128,11 +121,10 @@ Content-Type: application/json
   "const_id": 2,
   "party_id": 2,
   "candidate_number": 2,
-  "full_name": "Candidate B2"
+  "full_name": "นางสาวพิมพ์ชนก สุวรรณ"
 }
 
-### เขต 2: candidate_id 6 (party 3)
-###
+### เขต2 (party 3)
 POST {{baseUrl}}/candidates
 Content-Type: application/json
 
@@ -140,9 +132,8 @@ Content-Type: application/json
   "const_id": 2,
   "party_id": 3,
   "candidate_number": 3,
-  "full_name": "Candidate C2"
+  "full_name": "นายธนกร ศรีเจริญ"
 }
-
 ############################################################
 ### [B] 2) VOTERS (20 คน) — เขต 1: 1..10, เขต 2: 11..20----------------------------------------
 ### voter_id จะได้เป็น 1..20 ตามลำดับ
@@ -152,202 +143,105 @@ Content-Type: application/json
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111111",
-  "full_name": "Voter 1",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111111", "full_name": "สมชาย ใจดี", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111112",
-  "full_name": "Voter 2",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111112", "full_name": "สุดา วงศ์คำ", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111113",
-  "full_name": "Voter 3",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111113", "full_name": "ประยูร ศรีทอง", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111114",
-  "full_name": "Voter 4",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111114", "full_name": "วิไลพร สุขสวัสดิ์", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111115",
-  "full_name": "Voter 5",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111115", "full_name": "ชาญชัย บุญมี", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111116",
-  "full_name": "Voter 6",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111116", "full_name": "สุรีย์พร แสงทอง", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111117",
-  "full_name": "Voter 7",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111117", "full_name": "อนุชา ภักดี", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111118",
-  "full_name": "Voter 8",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111118", "full_name": "นิตยา ศรีสุข", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111119",
-  "full_name": "Voter 9",
-  "const_id": 1
-}
-
+{ "citizen_id": "1111111111119", "full_name": "ธวัชชัย ดีเลิศ", "const_id": 1 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111120",
-  "full_name": "Voter 10",
-  "const_id": 1
-}
+{ "citizen_id": "1111111111120", "full_name": "รัตนา ทองดี", "const_id": 1 }
 
 ### เขต 2 (11-20)
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111121",
-  "full_name": "Voter 11",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111121", "full_name": "กิตติพงษ์ ชัยดี", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111122",
-  "full_name": "Voter 12",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111122", "full_name": "พัชรี ศรีงาม", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111123",
-  "full_name": "Voter 13",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111123", "full_name": "สุพจน์ บุญรอด", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111124",
-  "full_name": "Voter 14",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111124", "full_name": "นฤมล ทองคำ", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111125",
-  "full_name": "Voter 15",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111125", "full_name": "ธีรชัย ศรีวงศ์", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111126",
-  "full_name": "Voter 16",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111126", "full_name": "จิราพร สุขใจ", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111127",
-  "full_name": "Voter 17",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111127", "full_name": "อภิวัฒน์ ดีมาก", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111128",
-  "full_name": "Voter 18",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111128", "full_name": "ปรียา ศรีสม", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111129",
-  "full_name": "Voter 19",
-  "const_id": 2
-}
-
+{ "citizen_id": "1111111111129", "full_name": "ชัยณรงค์ วัฒนะ", "const_id": 2 }
 ###
 POST {{baseUrl}}/voters
 Content-Type: application/json
 
-{
-  "citizen_id": "1111111111130",
-  "full_name": "Voter 20",
-  "const_id": 2
-}
+{ "citizen_id": "1111111111130", "full_name": "สุภาวดี บุญรักษา", "const_id": 2 }
+
 
 ############################################################
 ### 4) BALLOTS — ให้ทุกคนโหวตครบ 2 ใบ (รวม 40 ballots)
@@ -767,7 +661,7 @@ Content-Type: application/json
 {
   "voter_id": 19,
   "const_id": 2,
-  "candidate_id": 6,
+  "candidate_id": 7,
   "vote_type": "Constituency"
 }
 ###
@@ -777,7 +671,7 @@ Content-Type: application/json
 {
   "voter_id": 19,
   "const_id": 2,
-  "party_id": 3,
+  "party_id": 4,
   "vote_type": "PartyList"
 }
 
@@ -789,7 +683,7 @@ Content-Type: application/json
 {
   "voter_id": 20,
   "const_id": 2,
-  "candidate_id": 5,
+  "candidate_id": 9,
   "vote_type": "Constituency"
 }
 ###
@@ -799,9 +693,10 @@ Content-Type: application/json
 {
   "voter_id": 20,
   "const_id": 2,
-  "party_id": 2,
+  "party_id": 20,
   "vote_type": "PartyList"
 }
+
 
 ############################################################
 ### 5) RESULTS / CHECKS
@@ -814,9 +709,13 @@ GET {{baseUrl}}/voters
 ###
 GET {{baseUrl}}/ballots
 
-### นับ จำนวน ballot (ต้องเป็น 40) 
+### นับ จำนวน ballot (ต้องเป็น 44) 
 ###
 GET {{baseUrl}}/ballots/count
+
+### นับ จำนวนบัตรดี / บัตรเสีย ballot  
+###
+GET {{baseUrl}}/ballots/validity-count
 
 ### [D] ผลเขต (แยกเขต)---------------------------------------------------------------------
 GET {{baseUrl}}/results/constituency
