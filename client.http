@@ -709,7 +709,7 @@ GET {{baseUrl}}/voters
 ###
 GET {{baseUrl}}/ballots
 
-### นับ จำนวน ballot (ต้องเป็น 44) 
+### นับ จำนวน ballot (ต้องเป็น 40) 
 ###
 GET {{baseUrl}}/ballots/count
 
