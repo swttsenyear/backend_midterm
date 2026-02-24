@@ -6,15 +6,19 @@ from typing import List
 from database import create_db_and_tables, get_session
 from models import Region, Constituency, Party, Candidate, Voter, Ballot
 
-app = FastAPI(title="Election Backend Midterm")
+from contextlib import asynccontextmanager
 
 
 # =========================
 # Startup
 # =========================
-@app.on_event("startup")
-def on_startup():
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     create_db_and_tables()
+    yield
+
+app = FastAPI(title="Election Backend Midterm", lifespan=lifespan)
 
 
 # =========================================================
@@ -375,3 +379,4 @@ def results_constituency_overall(session: Session = Depends(get_session)):
 
     results = session.exec(statement).all()
     return [row._asdict() for row in results]
+
