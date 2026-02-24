@@ -1,6 +1,8 @@
 from typing import Optional
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlmodel import SQLModel, Field
+
+
 
 
 # =========================
@@ -67,8 +69,8 @@ class Voter(SQLModel, table=True):
     full_name: str
     const_id: int = Field(foreign_key="Constituencies.const_id")
 
-    has_voted_const: int = Field(default=0)  # 0 = ยังไม่ลง
-    has_voted_list: int = Field(default=0)   # 0 = ยังไม่ลง
+    has_voted_const: int = Field(default=0)  # 0 = ยังไม่เลือก
+    has_voted_list: int = Field(default=0)   # 0 = ยังไม่เลือก
 
 
 # =========================
@@ -80,7 +82,7 @@ class Ballot(SQLModel, table=True):
 
     ballot_id: Optional[int] = Field(default=None, primary_key=True)
 
-    voter_id: int = Field(foreign_key="Voters.voter_id")  # ⭐ เพิ่ม
+    voter_id: int = Field(foreign_key="Voters.voter_id")  # เพิ่ม
     const_id: int = Field(foreign_key="Constituencies.const_id")
 
     candidate_id: Optional[int] = Field(
@@ -93,4 +95,4 @@ class Ballot(SQLModel, table=True):
     )
 
     vote_type: str
-    voted_at: datetime = Field(default_factory=datetime.utcnow)
+    voted_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
